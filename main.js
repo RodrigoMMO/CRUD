@@ -1,3 +1,6 @@
+
+var auxElemento;
+
 class Contacto {
     constructor(nombre){
         this.nombre= nombre;
@@ -12,8 +15,9 @@ class UI{
         const elemento=document.createElement('div');
         elemento.innerHTML=`
             <div>
-                <strong>Contacto</strong>: ${contacto.nombre}  <button name="Eliminar">Eliminar</button>
+                <strong>${contacto.nombre}</strong>  <button name="Eliminar">Eliminar</button>
                 <button name="Actualizar">Actualizar</button>
+            </div>
         `;
         lista.appendChild(elemento);
         this.reiniciarUI();
@@ -34,10 +38,20 @@ class UI{
     {
         if(elemento.name === 'Actualizar')
         {
-           
+            auxElemento =elemento.previousElementSibling.previousElementSibling;
+            console.log(auxElemento);
+            inputA.value= auxElemento.innerHTML;  
         }
     }
 }
+function actualizar2daParte(){
+
+    auxElemento.innerHTML = inputA.value;
+    console.log("2el elemento es",auxElemento,auxElemento.innerHTML);
+    inputA.value='';
+    inputA.placeholder='Contacto Actualizado';
+   
+   }
 
 //  Eventos
 document.getElementById('Agendado')
